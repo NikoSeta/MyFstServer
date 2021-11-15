@@ -1,0 +1,20 @@
+[	
+    {
+    id: 1,
+    name: remera,
+    price: 40,
+    picture: remera,
+},
+{
+    id: 2,
+    name: pantalon,
+    price: 50,
+    picture: pantalon,
+},
+{
+    id: 3,
+    name: gorra,
+    price: 10,
+    picture: gorra,
+},
+]
