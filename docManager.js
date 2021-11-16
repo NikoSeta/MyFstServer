@@ -1,7 +1,4 @@
 const fs = require ("fs");
-let path = require ("path");
-
-
 class docManager{
     constructor(url){
         this.url = url
@@ -43,7 +40,7 @@ class docManager{
     async getAll(){
         try {
             let productos = await fs.promises.readFile(`${this.url}`, 'utf-8')
-            return JSON.parse(productos[0]);
+            return JSON.parse(productos);
         } catch (error) {
             console.log(error);
         }
