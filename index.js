@@ -8,7 +8,7 @@ let app = express();
 console.log(docManager.save());
 
 app.get("/" , (req, res, next) => {
-    res.send(main())
+    res.send(docManager.getAll)
 });
 app.listen(PORT, ()=>{
     console.log(`Servidor abierto en el puerto ${PORT}`);
