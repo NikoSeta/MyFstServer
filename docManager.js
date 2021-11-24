@@ -3,6 +3,7 @@ class docManager {
     constructor(ruta) {
       this.ruta = ruta;
     }
+
     async save(obj) {
       const objs = await this.getAll()
       let newId
@@ -20,19 +21,29 @@ class docManager {
         throw new Error(`Error al guardar: ${error}`)
       }
     }
+
     async getById(id) {
       const objs = await this.getAll()
       const buscado = objs.find(o => o.id == id)
       return buscado
     }
+
     async getAll() {
       try {
-        const objs = await fs.readFile(this.ruta, 'utf-8')
-        return JSON.parse(objs)
+        const objs = await fs.readFile(this.ruta, 'utf-8', (err, data) => {
+          if (err) {
+            console.error(err)
+            return
+          }
+          //console.log(data);
+          console.log(objs);
+          JSON.parse(data)
+        })
       } catch (error) {
-        return []
+        return console.log("Hay un error");
       }
     }
+
     async deleteById(id) {
       const objs = await this.getAll()
       const index = objs.findIndex(o => o.id == id)
