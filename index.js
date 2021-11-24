@@ -2,13 +2,15 @@ let express = require("express");
 let app = express();
 let { Router } = express;
 let routProductos = new Router;
-let router2 = new Router;
+let routerIdProd = new Router;
 let path = require("path");
-const DocManager = require("./docManager")
-const docManager = new DocManager('./productos.txt')
+const DocManager = require("./docManager");
+const docManager = new DocManager('./productos.txt');
 const PORT = 8080;
 
-app.use("/API/productos", routProductos)
+//Rutas
+app.use("/API/productos", routProductos);
+app.use("/API/productos/:id", routerIdProd);
 
 //Traigo todo el array
 routProductos.get("/" , async (req, res, next) => {
@@ -16,7 +18,7 @@ routProductos.get("/" , async (req, res, next) => {
     res.send(aux);
 });
 //Busco por Id
-routProductos.get("/:id" , async (req, res, next) => {
+routerIdProd.get("/:id" , async (req, res, next) => {
     const id = await docManager.getById();
     res.send(id);
 });
@@ -26,12 +28,12 @@ routProductos.post("/", async (req, res, next) => {
     res.send(nuevoProd);
 });
 //Modifica product
-routProductos.put("/" , async (req, res, next) => {
+routerIdProd.put("/" , async (req, res, next) => {
     const guardar = await docManager.getAll();
     res.send(guardar);
 });
 //Borra Prod por Id
-routProductos.delete("/" , async (req, res, next) => {
+routerIdProd.delete("/" , async (req, res, next) => {
     const deleteId = await docManager.deleteById();
     res.send(deleteId);
 });
