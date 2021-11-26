@@ -30,17 +30,10 @@ class docManager {
 
     async getAll() {
       try {
-        const objs = await fs.readFile(this.ruta, 'utf-8', (err, data) => {
-          if (err) {
-            console.error(err)
-            return
-          }
-          //console.log(data);
-          console.log(objs);
-          JSON.parse(data)
-        })
+        const objs = await fs.readFile(this.ruta, 'utf-8')
+        return JSON.parse({objs})
       } catch (error) {
-        return console.log("Hay un error");
+        return console.log(error);
       }
     }
 
@@ -57,8 +50,10 @@ class docManager {
         throw new Error(`Error al borrar: ${error}`)
       }
     }
+
     async deleteAll() {
       await fs.writeFile(this.ruta, JSON.stringify([], null, 2))
     }
   }
+  
   module.exports = docManager;

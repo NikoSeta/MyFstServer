@@ -1,23 +1,28 @@
 let express = require("express");
 let app = express();
 let { Router } = express;
+let path = require("path");
 let routProductos = new Router;
 let routerIdProd = new Router;
-let path = require("path");
 const DocManager = require("./docManager");
 const docManager = new DocManager('./productos.txt');
 const PORT = 8080;
 
+app.listen(PORT, ()=>{
+    console.log(`Servidor Abierto en http://localhost:${PORT}`);
+})
 //Rutas
+app.use("/API", express.static(path.join(__dirname, "/public")));
 app.use("/API/productos", routProductos);
 app.use("/API/productos/:id", routerIdProd);
 
-//Traigo todo el array
-routProductos.get("/" , async (req, res, next) => {
+
+//Traer todo el array
+app.get("/" , async (req, res, next) => {
     const aux = await docManager.getAll();
     res.send(aux);
 });
-//Busco por Id
+//Buscar por Id
 routerIdProd.get("/:id" , async (req, res, next) => {
     const id = await docManager.getById();
     res.send(id);
