@@ -8,24 +8,23 @@
 
     <title>Mi-Servidor</title>
 </head>
-<body>
-    <h1>Agregar Productos</h1>
-    <div>
-        <div class="input-group mb-3">
-            <span class="input-group-text">Producto</span>
-            <input type="text" class="form-control" id="producto">
-          </div>
+  <body>
+      <h1>Agregar Productos</h1>
+        <form id="productos" action="../productos.txt" method="post" enctype="text/plain">
           <div class="input-group mb-3">
-            <span class="input-group-text">Precio</span>
-            <input type="text" class="form-control" id="precio">
+              <span class="input-group-text">Producto</span>
+              <input type="text" name="producto" class="form-control" id="producto">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">Precio</span>
+              <input type="text"  name="precio" class="form-control" id="precio">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">Imagen</span>
+              <input type="text" name="imagen"  class="form-control" id="url">
           </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text">Imagen</span>
-            <input type="text" class="form-control" id="url">
-          </div>
-          <button type="button" class="btn btn-warning" id="btnEnviar">Agregar</button>
-          <button type="button" class="btn btn-warning" id="btnBorrar">Borrar</button>
-    </div>
-    
-</body>
+            <button type="button" class="btn btn-warning" id="btnEnviar">Agregar</button>
+            <button type="button" class="btn btn-warning" id="btnBorrar">Borrar</button>
+        </form>
+  </body>
 </html>

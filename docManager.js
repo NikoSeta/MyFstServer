@@ -30,8 +30,8 @@ class docManager {
 
     async getAll() {
       try {
-        const objs = await fs.readFile(this.ruta, 'utf-8')
-        return JSON.parse({objs})
+        let objs = await fs.promises.readFile(this.ruta, 'UTF-8')
+        return JSON.parse(objs)
       } catch (error) {
         return console.log(error);
       }
@@ -57,3 +57,5 @@ class docManager {
   }
   
   module.exports = docManager;
+
+
