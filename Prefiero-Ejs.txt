@@ -1,0 +1,1 @@
+Prefiero utilizar Ejs por que es más facil reconocer y modificar el código HTML e incluir JavaScrip en el mismo código. 
