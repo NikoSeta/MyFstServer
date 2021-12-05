@@ -10,18 +10,19 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extend:true }));
 
-let aux = []
-
 //Traer todo el array
 app.get("/" , async (req, res, next) => {
-    let aux = await docManager.getAll();
-    res.render("index", {aux});
+    const productos = await docManager.getAll();
+    res.render("index", productos);
 });
-app.post("/productos", (req, res, next)=>{
-    aux.push(req.body)
-    res.redirect("/");
-})
+
+app.post("/productos", (req, res)=>{
+    const newProducto = req.body
+    docManager.save(newProducto)
+    res.redirect("/")
+    console.log(req.body);
+});
 
 app.listen(PORT, ()=>{
     console.log(`Servidor abierto en http://localhost:${PORT}`);
-})
+});

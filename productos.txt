@@ -1,7 +1,7 @@
 {
   "productos": [
-    {"id": 1, "name": "remera", "price": 40, "picture": "remera"},
-    {"id": 2, "name": "pantalon", "price": 50, "picture": "pantalon"},
-    {"id": 3, "name": "gorra", "price": 10, "picture": "gorra"}
+    {"id": 1, "name": "Metro", "price": 40, "url": "https://cdn2.iconfinder.com/data/icons/tools-flat-v-1-free/129/measure-1024.png"},
+    {"id": 2, "name": "Atornillador", "price": 100, "url": "https://cdn2.iconfinder.com/data/icons/tools-flat-v-1-free/129/drill-1024.png"},
+    {"id": 3, "name": "Pinza", "price": 10, "url": "https://cdn2.iconfinder.com/data/icons/tools-flat-v-1-free/129/pliers_tools_-1024.png"}
     ]
 }
