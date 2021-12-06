@@ -10,7 +10,7 @@ class docManager {
       if (objs.length == 0) {
         newId = 1
       } else {
-        newId = objs[objs.length - 1].id + 1
+        newId = objs.length + 1
       }
       const newObj = { ...obj, id: newId }
       objs.push(newObj)

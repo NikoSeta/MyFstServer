@@ -17,10 +17,14 @@ app.get("/" , async (req, res, next) => {
 });
 
 app.post("/productos", (req, res)=>{
-    const newProducto = req.body
-    docManager.save(newProducto)
-    res.redirect("/")
-    console.log(req.body);
+    try {
+        const newProducto = req.body
+        docManager.save(newProducto)
+        res.redirect("/")
+        console.log(req.body);
+    } catch (error) {
+        console.log(error);
+    }    
 });
 
 app.listen(PORT, ()=>{
