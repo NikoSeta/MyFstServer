@@ -1,16 +1,18 @@
 let express = require("express");
 let app = express();
 let path = require("path");
-const DocManager = require("./docManager");
-const docManager = new DocManager('./productos.txt');
-const PORT = 8080;
+const DocManager = require("./components");
+const docManager = new DocManager('./components/productos/productos.txt');
+//----Puerto servidor local.
+let { server } = require ("./config") 
+const PORT = server.port;
 
+//Middlewears..
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extend:true }));
 
-//Traer todo el array
 app.get("/" , async (req, res, next) => {
     const productos = await docManager.getAll();
     res.render("index", productos);

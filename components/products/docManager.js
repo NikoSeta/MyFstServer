@@ -1,10 +1,12 @@
 const fs = require ("fs");
+
 class docManager {
+  
     constructor(ruta) {
       this.ruta = ruta;
     }
 
-    async save(obj) {
+    async save(prod) {
       const objs = await this.getAll()
       let newId
       if (objs.length == 0) {
@@ -12,11 +14,12 @@ class docManager {
       } else {
         newId = objs.length + 1
       }
-      const newObj = { ...obj, id: newId }
-      objs.push(newObj)
+      const newProd = { ...prod, id: newId }
+      objs.push(newProd)
+      
       try {
         await fs.writeFile(this.ruta, JSON.stringify(objs, null, 2))
-        return newId
+        return newProd
       } catch (error) {
         throw new Error(`Error al guardar: ${error}`)
       }
@@ -31,7 +34,8 @@ class docManager {
     async getAll() {
       try {
         let objs = await fs.promises.readFile(this.ruta, 'UTF-8')
-        return JSON.parse(objs)
+        return console.log(objs);
+        JSON.parse(objs)
       } catch (error) {
         return console.log(error);
       }
@@ -57,5 +61,3 @@ class docManager {
   }
   
   module.exports = docManager;
-
-

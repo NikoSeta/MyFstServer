@@ -1,6 +1,7 @@
 <br>
 <div>
     <h2 style="
+        text-align: center;
         color:#ffc107; 
         background-color: #212529; 
         padding-bottom: 8px; 
@@ -14,7 +15,7 @@
                  <td>- <%=productos.name %>  </td>
                  <td>$<%=productos.price  %>  </td>
                  <td><img style="width: 30px; height: 30px;" src=<%= productos.url  %> ></td>
-                 <td><button id="delete"> X </button></td>
+                 <td><button class="btn-warning" id="delete"> X </button></td>
              </tr>
             <% } %> 
         </table>
